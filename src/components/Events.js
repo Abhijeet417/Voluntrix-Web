@@ -5,7 +5,7 @@ import show3 from './image3.jpg';
 
 export const Events = () => {
   const EventStyle = {
-    height: "500px",
+    // height: "500px",
     backgroundColor: "black",
   };
   const slideStyle = {

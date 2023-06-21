@@ -5,7 +5,7 @@ export const Footer = () => {
       backgroundColor: "#7C96AB",
       fontWeight: "bold",
       fontSize: "1rem",
-      position: "fixed",
+      // position: "fixed",
       bottom: 0,
       left: 0,
       display : "flex", padding : "0 40%",
