@@ -1,8 +1,23 @@
 import React from 'react'
 import logo from './Logo.jpg'
-import { Link } from 'react-router-dom'
-
+import { useEffect, useState} from "react";
+import { Link,useNavigate } from 'react-router-dom'
+import { auth,provider } from './config'
+import {signInWithPopup} from "firebase/auth";
+import  Home  from './VolunteerSection/Home';
 export const Header = () => {
+  const navigate = useNavigate();
+   const [value,setValue] = useState('')
+    const handleClick =()=>{
+        signInWithPopup(auth,provider).then((data)=>{
+            setValue(data.user.email)
+            localStorage.setItem("email",data.user.email)
+            navigate('/home')
+        })
+    }
+     useEffect(()=>{
+        setValue(localStorage.getItem('email'))
+    })
     const HeaderStyle = {
         color: "#8F43EE",backgroundColor: "#191825",height:"15%"
     }
@@ -22,16 +37,18 @@ export const Header = () => {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-            <Link className="nav-link active" style={{color : "#7C96AB"}} aria-current="page" to="#">About</Link>
+            <a className="nav-link active" style={{color : "#7C96AB"}} aria-current="page" href="#about">About</a>
             </li>
             <li className="nav-item">
-            <Link className="nav-link active" style={{color : "#7C96AB"}} aria-current="page" to="#">Features</Link>
+            <a className="nav-link active" style={{color : "#7C96AB"}} aria-current="page" href="#features">Features</a>
             </li>
             <li className="nav-item">
             <Link className="nav-link active" style={{color : "#7C96AB"}} aria-current="page" to="#">Download</Link>
             </li>
          </ul>
-         <Link className="btn btn-outline-primary" style={buttonStyle} to="/login" type="submit">Login</Link>
+         {value?<Home/> : 
+           <Link className="btn btn-outline-primary" style={buttonStyle} onClick={handleClick} type="submit">Login</Link>
+         }
         </div>
        </div>
      </nav>

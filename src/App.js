@@ -5,30 +5,38 @@ import { Footer } from './components/Footer';
 import { About } from './components/About';
 import { Download } from './components/Download';
 import { Login } from './components/Login';
+import { Stories } from './components/Stories';
+import { NewsLetter } from './components/NewsLetter';
 import { BrowserRouter,Routes,Route } from 'react-router-dom';
+import  Home  from './components/VolunteerSection/Home';
 function App() {
   return (
-    <BrowserRouter>
-    
     <div className="App">
+    
         <>
-          <Header/>
+        <BrowserRouter>
           <Routes>
             <Route exact path='/' Component={() => {
               return (<>
-                <About/>
+                <Header/>
+                <About id="about"/>
                 <hr class="featurette-divider"></hr>
-                <Events/>
+                <Events id="features"/>
+                <hr class="featurette-divider"></hr>
+                <Stories/>
                 <hr class="featurette-divider"></hr>
                 <Download/>
+                <hr class="featurette-divider"></hr>
+                <NewsLetter/>
+                <hr class="featurette-divider"></hr>
+                <Footer/>
               </>)
             }}></Route>
-            <Route exact path='/login' Component={Login}></Route>
+            <Route exact path='/Home' Component={Home}/>
           </Routes>
-          <Footer/>
+        </BrowserRouter>
         </>
     </div>
-   </BrowserRouter>
   );
 }
 

@@ -9,7 +9,7 @@ export const Download = () => {
           <p class="lead mb-4">Download Our Brand New App (Voluntrix).</p>
           <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
             <button type="button" class="btn btn-primary btn-lg px-4 gap-3 btn-light"><a href=""><i class="fa-brands fa-google-play" style={{color: "#2a1f51",marginRight:"7px"}}></i></a>For Android</button>
-            <button type="button" class="btn btn-outline-secondary btn-lg px-4 "><a href=""></a>For iOs (Coming Soon)</button>
+            <button type="button" class="btn btn-primary btn-lg px-4 gap-3 btn-light"><a href=""><i class="fa-brands fa-apple" style={{color: "#2a1f51",marginRight:"7px"}}></i></a>For IOS</button>
           </div>
         </div>
       </div>
