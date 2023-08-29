@@ -1,11 +1,13 @@
 import React from 'react'
 import logo from './Logo.jpg'
-import { useEffect, useState} from "react";
+import { useEffect, useState,useRef} from "react";
 import { Link,useNavigate } from 'react-router-dom'
 import { auth,provider } from './config'
 import {signInWithPopup} from "firebase/auth";
 import  Home  from './VolunteerSection/Home';
+
 export const Header = () => {
+
   const navigate = useNavigate();
    const [value,setValue] = useState('')
     const handleClick =()=>{
@@ -22,7 +24,7 @@ export const Header = () => {
         color: "#8F43EE",backgroundColor: "#191825",height:"15%"
     }
     const buttonStyle = {
-        color : "#8F43EE",borderColor : "#8F43EE",margin: "0 10px"
+        color : "#8F43EE",borderColor : "#8F43EE",margin: "0 25px"
     }
   return (
     <div>
@@ -53,5 +55,8 @@ export const Header = () => {
        </div>
      </nav>
     </div>
+
+
+
   )
 }

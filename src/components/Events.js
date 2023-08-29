@@ -1,7 +1,8 @@
 import React from 'react';
-// import show from './image1.jpg';
-// import show2 from './image2.webp';
-// import show3 from './image3.jpg';
+import './All_Styles/Event.css'
+import ForYou from './All_images/ForYou.png';
+import Community from'./All_images/trade_fair.png'
+import BIG from './All_images/BIG.png'
 
 export const Events = () => {
   const EventStyle = {
@@ -19,24 +20,25 @@ export const Events = () => {
   };
 
   return (
-         <div class="row">
+      <div class="row features-container">
       <div class="col-lg-4">
-        <img src=".." alt="First Feature" class="bd-placeholder-img " width="140" height="140"/>
-        <h2 class="fw-normal">Vision</h2>
+        <h2 class="heading">Vision</h2>
+        <img src={Community} alt="First Feature" class="bd-placeholder-img " width="240" height="140"/>
         <p>Join us in building an solid community.</p>
         
       </div>
-      <div class="col-lg-4">
-        <img src=".." alt="Secound Feature" class="bd-placeholder-img " width="140" height="140"/>
-        <h2 class="fw-normal">For you</h2>
-        <p>Showcase you talent here.</p>
+     <div class="col-lg-4">
+        <h2 class="heading">For you</h2>
+        <img src={ForYou} alt="Secound Feature" class="bd-placeholder-img " width="140" height="140"/>
+        <p style={{paddingTop : "5px"}}>Showcase you talent here.</p>
         
       </div>
       <div class="col-lg-4">
-        <img src=".." alt="Third Feature" class="bd-placeholder-img " width="140" height="140"/>
-        <h2 class="fw-normal">What's New</h2>
-        <p>Be a part of something BIG.</p>
+        <h2 class="heading">What's New</h2>
+        <img src={BIG} alt="Third Feature" class="bd-placeholder-img " width="240" height="140"/>
+        <p>Be a part of something <span className="highlight">BIG</span></p>
       </div>
     </div>
     );
 };
+

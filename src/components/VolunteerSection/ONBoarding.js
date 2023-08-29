@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-function Home(){
+function Onboarding(){
     const navigate = useNavigate();
     const logout =()=>{
         localStorage.clear()
@@ -9,9 +9,9 @@ function Home(){
     }
     return (
         <div>
-            <h1 >Home Page</h1>
+            <h1>Onboarding Page</h1>
             <button onClick={logout}>Logout</button>
         </div>
     );
 }
-export default Home;
+export default Onboarding;
