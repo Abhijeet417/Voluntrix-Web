@@ -6,7 +6,7 @@ import { About } from './components/About';
 import { Download } from './components/Download';
 import { Login } from './components/Login';
 import { Stories } from './components/Stories';
-import { NewsLetter } from './components/NewsLetter';
+import { Contact } from './components/Contact';
 import { BrowserRouter,Routes,Route } from 'react-router-dom';
 import  Home  from './components/VolunteerSection/Home';
 function App() {
@@ -20,15 +20,15 @@ function App() {
               return (<>
                 <Header/>
                 <About id="about"/>
-                <hr class="featurette-divider"></hr>
+               
                 <Events id="features"/>
-                <hr class="featurette-divider"></hr>
+                <hr class="featurette-divider" style={{margin : "0",height: "2px", borderRadius: "1px",}}></hr>
                 <Stories/>
-                <hr class="featurette-divider"></hr>
+                <hr class="featurette-divider" style={{margin : "0",height: "2px", borderRadius: "1px",}}></hr>
                 <Download/>
-                <hr class="featurette-divider"></hr>
-                <NewsLetter/>
-                <hr class="featurette-divider"></hr>
+                <hr class="featurette-divider" style={{margin : "0",height: "2px", borderRadius: "1px",}}></hr>
+                 <Contact/>
+                 <hr class="featurette-divider" style={{margin : "0",height: "2px", borderRadius: "1px",}}></hr>
                 <Footer/>
               </>)
             }}></Route>

@@ -1,0 +1,40 @@
+@keyframes typewriter {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 100%;
+    }
+}
+
+.typewriter-text {
+    overflow: hidden;
+}
+
+.typewriter-text.animated {
+    animation: typewriter 1.75s steps(40) forwards;
+}
+
+.slide-in-image {
+    position: relative;
+    right: -300px;
+    /* Start outside the viewport */
+    width:450;
+    height:450;
+    /* Adjust the vertical position */
+    animation: slide-in 1.75s forwards;
+    object-fit: cover;
+    opacity: 0;
+}
+
+@keyframes slide-in {
+    0% {
+        right: -100px;
+        opacity: 0;
+    }
+    100%{
+        right : 0;
+        opacity: 1;
+    }
+}
