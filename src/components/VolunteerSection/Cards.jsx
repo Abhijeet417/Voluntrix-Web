@@ -248,7 +248,7 @@ const Cards = ({event,onApply}) => {
 
   const handleApply = () => {
     setIsApplied(true);
-    // Pass the event data to the parent component when the form is submitted
+    // Passing the event data to the parent component when the form is submitted
     onApply(event);
   };
     const stylecard ={
