@@ -5,7 +5,9 @@ import { Link,useNavigate } from 'react-router-dom'
 import { auth,provider } from './config'
 import {signInWithPopup} from "firebase/auth";
 import  Home  from './VolunteerSection/Home';
+
 import { useUser } from './UserContext';
+
 
 
 export const Header = () => {
@@ -27,7 +29,7 @@ export const Header = () => {
         color: "#8F43EE",backgroundColor: "#191825",height:"10%"
     }
     const buttonStyle = {
-        color : "#8F43EE",borderColor : "#8F43EE",margin: "0 10px"
+        color : "#8F43EE",borderColor : "#8F43EE",margin: "0 25px"
     }
     const button1Style = {
         backgroundColor : "#8F43EE",borderColor :"black",color : "black",margin: "0 10px"

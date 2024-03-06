@@ -16,6 +16,8 @@
     animation: typewriter 1.75s steps(40) forwards;
 }
 
+
+
 .slide-in-image {
     position: relative;
     right: -300px;

@@ -2,7 +2,31 @@
     background-color: black;
     /* Set black background color */
     color: white;
+
     padding-bottom: 1.8rem;
+}
+
+
+
+
+.features-container .col-lg-4 {
+    opacity: 0;
+    /* Start with 0 opacity */
+    transform: translateY(20px);
+    /* Move elements down initially */
+    animation: fadeInAndSlideUp 1s ease forwards;
+}
+
+@keyframes fadeInAndSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 
