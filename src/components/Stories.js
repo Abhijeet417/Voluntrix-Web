@@ -3,6 +3,7 @@ import './All_Styles/Stories.css'; // Import your custom CSS file for styling
 // Import your event images here
 import eventImage1 from './All_images/exhibition.png';
 import eventImage2 from './All_images/seminar__event.png';
+import eventImage3 from './All_images/hackathons.jpg'
 // import eventImage3 from './image3.jpg';
 
 export const Stories = () => {
@@ -19,8 +20,8 @@ export const Stories = () => {
         
       </div>
       <div className="event-container col-lg-4">
-        <img src="" alt="Event 3" className="event-image" />
-        <h2 className="event-title">What's New</h2>
+        <img src={eventImage3} alt="Event 3" className="event-image" />
+        <h2 className="event-title">Hackathons</h2>
         
       </div>
     </div>

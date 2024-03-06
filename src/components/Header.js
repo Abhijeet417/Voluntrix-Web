@@ -5,26 +5,32 @@ import { Link,useNavigate } from 'react-router-dom'
 import { auth,provider } from './config'
 import {signInWithPopup} from "firebase/auth";
 import  Home  from './VolunteerSection/Home';
+import { useUser } from './UserContext';
+
 
 export const Header = () => {
 
   const navigate = useNavigate();
-   const [value,setValue] = useState('')
+   const {user,setUser} = useUser();
     const handleClick =()=>{
-        signInWithPopup(auth,provider).then((data)=>{
-            setValue(data.user.email)
-            localStorage.setItem("email",data.user.email)
+        signInWithPopup(auth,provider).then((result)=>{
+            const user = result.user;
+            setUser(user);
+            //console.log("user data" , user);
             navigate('/home')
         })
     }
-     useEffect(()=>{
-        setValue(localStorage.getItem('email'))
+    useEffect(()=>{
+        setUser(localStorage.getItem('email'))
     })
     const HeaderStyle = {
-        color: "#8F43EE",backgroundColor: "#191825",height:"15%"
+        color: "#8F43EE",backgroundColor: "#191825",height:"10%"
     }
     const buttonStyle = {
-        color : "#8F43EE",borderColor : "#8F43EE",margin: "0 25px"
+        color : "#8F43EE",borderColor : "#8F43EE",margin: "0 10px"
+    }
+    const button1Style = {
+        backgroundColor : "#8F43EE",borderColor :"black",color : "black",margin: "0 10px"
     }
   return (
     <div>
@@ -45,10 +51,18 @@ export const Header = () => {
             <a className="nav-link active" style={{color : "#7C96AB"}} aria-current="page" href="#features">Features</a>
             </li>
             <li className="nav-item">
-            <Link className="nav-link active" style={{color : "#7C96AB"}} aria-current="page" to="#">Download</Link>
+            <a className="nav-link active" style={{color : "#7C96AB"}} aria-current="page" href="#download">Download</a>
             </li>
          </ul>
-         {value?<Home/> : 
+        
+        <Link to="/signup" // Use the correct path to your sign-up page
+              className="btn btn-outline-primary"
+              style={button1Style}
+              type="submit"
+            >
+              Sign Up
+            </Link>
+         {user?<Home/> : 
            <Link className="btn btn-outline-primary" style={buttonStyle} onClick={handleClick} type="submit">Login</Link>
          }
         </div>

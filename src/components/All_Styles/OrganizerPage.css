@@ -1,0 +1,44 @@
+.leftSectionStyle {
+    width: 20%;
+    padding: 20px 20px 70px 20px;
+    border-right: 1px solid #ccc;
+    background-color: #191825;
+    height: 100vh;
+    
+}
+
+.rightSectionStyle {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center;
+        align-items: center; */
+    width: 80%;
+    overflow-y: auto; 
+    box-sizing: border-box;
+    height: 100vh;
+    background-color: grey;
+    
+}
+
+.centered-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.elementsDiv{
+    margin: 15px 0;
+    display: flex;
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center;
+}
+
+.bt1{
+    color : #8F43EE;
+    border-color: #8F43EE;
+}
+
+

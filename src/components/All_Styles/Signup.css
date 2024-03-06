@@ -1,0 +1,88 @@
+
+.ct {
+    /* margin-top: 5; */
+    background-color: black;
+    color: #7c96ab;
+    padding: 3rem 3rem;
+    /* border-style: dotted; */
+    /* border-color: wheat; */
+}
+.left-section{
+    /* margin-left: 1rem; */
+    align-items: center;
+    padding: 0 3rem;
+}
+.Lg{
+    margin-bottom: 2.8rem;
+}
+
+.bt {
+    border-radius: 0.5rem;
+    width: 100%;
+    background-color: #8f43ee;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 10px;
+    text-decoration: none;
+}
+
+
+
+.ip[type="email"],
+.ip[type="password"] {
+    display: block;
+
+    border-radius: 0.5rem;
+    background-color: #8f43ee;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    /* Adjust padding to match button size */
+    margin-top: 10px;
+    width: 100%;
+    /* Make the input fields stretch to the full width of the parent */
+}
+
+/* Right section */
+.right-section{
+    margin-left: 3rem;
+    width: 80%;
+}
+.ipt{
+    background-color: #7c96ab;
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    padding: 10px;
+    margin: 8px 0;
+    width: 100%;
+}
+
+.dropdown{
+        
+        color: white;
+        border: none;
+        border-radius: 0.5rem;
+        padding: 5px;
+        margin-top: 5px;
+        width: 90%;
+}
+select {
+    background-color: #8f43ee;
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    padding: 10px;
+    margin-top: 5px;
+    width: 90%;
+}
+
+.submitButton{
+    margin-top: 15px;
+    padding: 10px 20px;
+    border-style: solid;
+    border-color: hsl(120, 74%, 54%);;
+    color: hsl(120, 74%, 54%);
+    width: 100%;
+}

@@ -4,7 +4,7 @@ import './All_Styles/About.css'
 export const About = () => {
    
   return (
-    <div class="row featurette parent-div " style={{backgroundColor : "black"}} >
+    <div class="row featurette parent-div " style={{backgroundColor : "black"}} id='about'>
       
       <div class="col-md-6">
         <h2 class="display-4 lh-1" style={{margin : "150px 0 0 100px",fontWeight:"lighter",marginBottom : "30px",textAlign : "left",color:"#8F43EE"}}>About Us</h2>

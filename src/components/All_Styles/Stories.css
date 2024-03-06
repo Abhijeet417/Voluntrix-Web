@@ -4,8 +4,7 @@
     align-items: center;
     overflow: hidden;
     background-color: #040D12;
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
+    padding: 4.5rem;
 }
 
 
@@ -55,12 +54,12 @@
     object-fit: cover;
 }
 
-.event-details {
-    margin-top: 10px;
-}
 
 .event-title {
+    font-weight: 300;
+    letter-spacing: 2px;
     margin: 0;
+    margin-top: 12px;
 }
 
 .event-description {
