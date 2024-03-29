@@ -1,0 +1,36 @@
+footer {
+    background-color: black;
+    padding: 1rem 0;
+    text-align: center;
+
+}
+
+.footer_socials {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.footer_socials a {
+    background: #8f43ee;
+    color: white;
+    padding: 0.8rem;
+    border-radius: 0.7rem;
+    display: flex;
+    border: 1px solid transparent;
+}
+
+.footer_socials a:hover {
+    background: white;
+    color: var(--color-bg);
+    border-color: var(--color-bg);
+}
+
+.footer_copyright {
+    font-size: 1.2;
+    margin-bottom: 1.5rem;
+    font-size: 1.2rem;
+    color: white;
+    letter-spacing: 2px;
+}

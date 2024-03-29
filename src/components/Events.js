@@ -5,20 +5,6 @@ import Community from'./All_images/trade_fair.png'
 import BIG from './All_images/BIG.png'
 
 export const Events = () => {
-  // const EventStyle = {
-  //   height: "500px",
-  //   backgroundColor: "black",
-  // };
-  // const slideStyle = {
-  //   width: "100%",
-  //   height: "50%" 
-  // };
-  // const imageStyle = {
-  //   width: "100%",
-  //   height: "100px",
-  //   objectFit: 'contain'
-  // };
-
   return (
       <div class="row features-container" id='features'> 
       <div class="col-lg-4">
@@ -41,4 +27,34 @@ export const Events = () => {
     </div>
     );
 };
+
+// import React from 'react';
+// import './All_Styles/Event.css'
+// import ForYou from './All_images/ForYou.png';
+// import Community from'./All_images/trade_fair.png'
+// import BIG from './All_images/BIG.png'
+
+// export const Events = () => {
+//   return (
+//     <div className="c">
+//       <div className="features-container" id="features"> 
+//         <FeatureBox title="Vision" image={Community} description="Join us in building a solid community." />
+//         <FeatureBox title="For you" image={ForYou} description="Showcase your talent here." reverse />
+//         <FeatureBox title="What's New" image={BIG} description="Be a part of something BIG" />
+//       </div>
+//     </div>
+//   );
+// };
+
+// const FeatureBox = ({ title, image, description, reverse }) => {
+//   return (
+//     <div className={`feature-box ${reverse ? 'reverse' : ''}`}>
+//       <img src={image} alt={title} />
+//       <div className="text-content">
+//         <h2 className={`heading ${reverse ? 'right-align' : 'left-align'}`}>{title}</h2>
+//         <p className={`${reverse ? 'right-align' : 'left-align'}`}>{description}</p>
+//       </div>
+//     </div>
+//   );
+// };
 

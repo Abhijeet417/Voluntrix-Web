@@ -1,35 +1,8 @@
 .features-container {
     background-color: black;
-    /* Set black background color */
     color: white;
-
     padding-bottom: 1.8rem;
 }
-
-
-
-
-.features-container .col-lg-4 {
-    opacity: 0;
-    /* Start with 0 opacity */
-    transform: translateY(20px);
-    /* Move elements down initially */
-    animation: fadeInAndSlideUp 1s ease forwards;
-}
-
-@keyframes fadeInAndSlideUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-
 .heading {
     padding-bottom: 25px; 
     color: #8F43EE; 
@@ -51,3 +24,58 @@ p{
 img{
      filter: brightness(1);
 }
+
+
+
+
+
+/* .c{
+    background-color: black;
+    color: white;
+}
+
+.features-container {
+    display: flex;
+    flex-direction: column;
+    margin: 0 10%;
+}
+
+.feature-box {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.feature-box.reverse {
+    flex-direction: row-reverse;
+}
+
+.feature-box img {
+    width: 40%;
+    height: 10rem;
+    filter: brightness(1);
+}
+
+.text-content {
+    padding: 20px;
+    width: 60%;
+}
+
+.left-align {
+    text-align: right;
+}
+
+.right-align {
+    text-align: left;
+}
+
+.heading {
+    color: #8F43EE;
+    font-weight: 200;
+    font-size: 2.3rem;
+    letter-spacing: 1px;
+}
+
+p {
+    font-size: 1rem;
+    color: #7C96AB;
+} */

@@ -7,7 +7,7 @@ export const Contact = () => {
     <div className="contact-us-footer" style={{backgroundColor : "#7C96AB"}}>
       <div className="container">
         <div className="row">
-          <h2 className='AboutHeading'>Connect With Team</h2>
+          <h2 className='ContactHeading'>Connect With Team</h2>
           <div className="col-md-6 ">
             <form className='contact-form'>
               <div className="mb-3">

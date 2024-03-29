@@ -7,34 +7,19 @@
     padding: 4.5rem;
 }
 
-
-/* .event-carousel {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    overflow: hidden;
-    background: url('path/to/your/background-image.jpg') no-repeat center center fixed;
-    background-size: cover;
-} */
-
 .event-container {
     flex: 0 0 calc(33.333% - 20px);
     background-color: black;
-    /* Set default background color to black */
+    /* default background color to black */
     color: white;
-    /* Set default text color to white */
+    /*  default text color to white */
     
     padding: 2.5rem;
     text-align: center;
     transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s, color 0.3s;
-    display: flex;
-    flex-direction: column;
+   
 }
 
-.middle-event {
- 
-    z-index: 1;
-}
 
 .event-container:hover {
     background-color: #8F43EE;
@@ -45,8 +30,10 @@
     /* Adjust the value as needed */
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
-
-/* Rest of your existing styles */
+.middle-event {
+ 
+    z-index: 1;
+}
 
 .event-image {
     width: 100%;
@@ -65,4 +52,26 @@
 .event-description {
     margin-top: 5px;
     color: white;
+}
+
+@media only screen and (max-width: 768px){
+    .event-carousel {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: auto;
+    }
+    .event-container {
+        padding: 0;
+        margin: 8px auto;
+    }
+    .middle-event {
+       z-index: 0;
+    }  
+    .event-image {
+        width: 80%;
+        height: 150px;
+        object-fit: cover;
+    }
 }
