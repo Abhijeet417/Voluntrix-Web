@@ -1,20 +1,20 @@
 
-.leftSection {
+.leftSection{
     width: 20%;
-        padding: 20px 20px 70px 20px;
-        border-right: 1px solid #ccc;
-        background-color: #191825;
-        height: 100vh;
+    color: white;
+    padding: 20px 20px 70px 20px;
+    border-right: 1px solid #ccc;
+    background-color: #191825;
+    height: 100vh;
+
 }
 
-
-
 .elementsdiv {
-    margin: 15px 0;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
+    margin: 30px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .bt11 {
@@ -25,12 +25,18 @@
 
 .rightSection {
     display: flex;
-        flex-direction: column;
-        /* justify-content: center;
-            align-items: center; */
-        width: 80%;
-        overflow-y: auto;
-        box-sizing: border-box;
-        height: 100vh;
-        background-color: grey;
+    flex-direction: column;
+    /* justify-content: center;
+        align-items: center; */
+    width: 80%;
+    overflow-y: auto;
+    box-sizing: border-box;
+    height: 100vh;
+    background-color: grey;
+}
+
+.dropIcons{
+    cursor: pointer;
+    fontSize: 2rem;
+    color: black;
 }

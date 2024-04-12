@@ -1,11 +1,18 @@
 
 .contact-us-footer{
+    background-color: black;
     padding : 3rem 3rem 4rem 3rem;
 }
 
 .ContactHeading{
-    font-size: 2.7rem;
-    margin-bottom: 3rem;
+    color: #8F43EE;
+    font-size: 3rem;
+    margin: auto 0;
+    display: inline-block;
+    text-transform: uppercase;
+    font-weight: lighter;
+    letter-spacing: 2px;
+    line-height: 1.2;
 }
 
 .contact-form{
@@ -16,24 +23,10 @@
 
 }
 
-.contact-form .form-details {
-    width: 70%;
-    /* margin-top: -1rem; */
-    /* position : absolute; */
-}
 
-.message::placeholder {
-    /* Apply styles to the placeholder text */
-    /* position: relative; */
-    /* top: 0rem; */
-    /* Adjust as needed */
-    /* color: #ccc; */
-    /* Placeholder text color */
-}
 .contact-form .form-details {
     width: 70%;
     /* Adjust the width as needed */
-
     padding-left: 1rem;;
     margin-right: auto;
     margin-left: auto;

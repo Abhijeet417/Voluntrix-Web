@@ -59,6 +59,7 @@ import { getDatabase, ref, get } from "firebase/database";
 import Cards from './Cards';
 import { useAppliedEvents } from "./AppliedEventsContext";
 import { useUser } from "../UserContext";
+import Popup from "./Popup";
 
 
 const ListOfEvents = {
@@ -80,10 +81,12 @@ const heading ={
 }
 function Home() {
    const {user} = useUser();
-   console.log("user" , user.displayName);
+  //  console.log("user" , user.displayName);
   const [userEvents, setUserEvents] = useState([]);
   const { addAppliedEvent } = useAppliedEvents();
+  const [selectedEvent, setSelectedEvent] = useState(null); // State for selected event
 
+   
   const handleApply = (event) => {
     // Call addAppliedEvent to add the event to the appliedEvents state
     addAppliedEvent(event);
@@ -120,6 +123,14 @@ function Home() {
   }, []); 
 
  
+  const handleEventClick = (event) => {
+    setSelectedEvent(event);
+    // console.log("selected event : " ,selectedEvent);
+  };
+
+  const handleClosePopup = () => {
+    setSelectedEvent(null);
+  };
 
   return (
     <div>
@@ -130,11 +141,12 @@ function Home() {
 
         {userEvents.map((event,index) => (
           <div className="col-md-4 mb-3" key={index}>
-              <Cards event={event} onApply={() => handleApply(event)}/> 
+              <Cards event={event} onApply={() => handleApply(event)} onClick={() => handleEventClick(event)}/> 
             </div>
         ))}
        </div>
         </div>
+        {selectedEvent && <Popup event={selectedEvent} onClose={handleClosePopup} />}
       {/* <Footer /> */}
     </div>
   );

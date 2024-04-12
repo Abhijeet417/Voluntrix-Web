@@ -4,6 +4,9 @@ import AddIcon from '@mui/icons-material/Add';
 import SearchIcon from '@mui/icons-material/Search';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import LogoutIcon from '@mui/icons-material/Logout';
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
+import logo from '../Logo.jpg'; 
 import MultipleSelect from './Multipleselect';
 import OrganizerForm from './OrganizerForm';
 import { Link, useNavigate } from 'react-router-dom';
@@ -12,6 +15,7 @@ import {auth} from '../config';
 import '../All_Styles/OrganizerPage.css';
 import Dialog from '@mui/material/Dialog';
 import Slide from '@mui/material/Slide';
+
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
@@ -24,18 +28,18 @@ const headingStyle = {
   marginBottom: '20px',
 };
 
-const sectionStyle = {
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  color : "white",
-};
+// const sectionStyle = {
+//   display: 'flex',
+//   flexDirection: 'column',
+//   alignItems: 'center',
+//   color : "white",
+// };
 
-const iconStyle = {
-  fontSize: '30px',
-  marginRight: '10px',
-  transition: 'transform 0.3s ease-in-out',
-};
+// const iconStyle = {
+//   fontSize: '30px',
+//   marginRight: '10px',
+//   transition: 'transform 0.3s ease-in-out',
+// };
 
 const AddOuter = {
     height : '50px',
@@ -87,13 +91,21 @@ const Organizerpage = () => {
   
   const userInfo = auth.currentUser;
   const uid = userInfo.uid;
-
+  // console.log("user" , userInfo);
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [posts, setPosts] = useState([]);
   const [open, setOpen] = useState(false);
+  const [expandedEvents, setExpandedEvents] = useState({});
   const navigate = useNavigate();
 
 
+    // Function to toggle the expanded state of an event
+   const toggleEvent = (index) => {
+     setExpandedEvents((prevState) => ({
+       ...prevState,
+       [index]: !prevState[index],
+     }));
+   };
   const handleButtonClick = () => {
       setOpen(false);
     };
@@ -160,41 +172,33 @@ const Organizerpage = () => {
   <div className='container-fluid h-100'>
     <div className="row h-100">
 
-      <div className="col-md-3 leftSectionStyle">
-      <div className=''>
-        
-        <h1 style={headingStyle}>Voluntrix</h1>
-          {/* <div className="user-info">
-                <img src={userInfo.photoURL} alt="User" className="user-image" />
-                <div> 
-                <h3 className="user-name">{userInfo.displayName}</h3>
-                <p className='user-email'>{userInfo.email}</p>
-                </div>
-              </div> */}
+      <div className="leftSectionStyle">
+      <div>
+         <img src={logo} alt="Voluntrix" className='logoImage'/>
          <hr className="divider" />
-      <div style={sectionStyle}>
+      <div>
         <div className='elementsDiv'>
            <Link to="/Home" style={linkStyle} onMouseEnter={handleTextHover}
             onMouseLeave={handleTextLeave}>
-            <HomeIcon style={iconStyle} onMouseEnter={handleIconHover}
+            <HomeIcon className='icons' onMouseEnter={handleIconHover}
             onMouseLeave={handleIconLeave}/>
-            Home
+            <span>Home</span>
           </Link>
         </div>
         <div className='elementsDiv'>
           <Link to="/Search" style={linkStyle}onMouseEnter={handleTextHover}
             onMouseLeave={handleTextLeave}>
-            <SearchIcon style={iconStyle} onMouseEnter={handleIconHover}
+            <SearchIcon className='icons' onMouseEnter={handleIconHover}
             onMouseLeave={handleIconLeave}/>
-            Search
+            <span>Search</span>
           </Link>
         </div>
         <div className='elementsDiv'>
           <Link to="/Profile" style={linkStyle}onMouseEnter={handleTextHover}
             onMouseLeave={handleTextLeave}>
-            <AccountCircleIcon style={iconStyle} onMouseEnter={handleIconHover}
+            <AccountCircleIcon className='icons' onMouseEnter={handleIconHover}
             onMouseLeave={handleIconLeave}/>
-            Profile
+            <span>Profile</span>
           </Link>
         </div>
         <div className='elementsDiv'>
@@ -204,12 +208,11 @@ const Organizerpage = () => {
           </div>
           <div style={{ cursor: 'pointer', ...linkStyle }} onMouseEnter={handleTextHover}
             onMouseLeave={handleTextLeave}>
-            Post Your Event
+            <span>Post Your Event</span>
           </div>
         </div>
-        <MultipleSelect />
         <div>
-          <LogoutIcon style={iconStyle} />
+          <LogoutIcon className='icons' />
           <button onClick={logout} className='btn bt1'>
             Logout
           </button>
@@ -218,7 +221,7 @@ const Organizerpage = () => {
       </div>
       </div>
       {/* Right section */}
-      <div className="col-md-9 rightSectionStyle">
+      <div className="rightSectionStyle">
       <div className=' '>
         {/* {isFormOpen && <OrganizerForm addPost={addPost} />}  */}
         <Dialog
@@ -235,15 +238,26 @@ const Organizerpage = () => {
               <div className="centered-content">
                 <p style={contentStyle}>No Post yet</p>
               </div>} 
-            <div className="row text-start ">
+            <div className="row">
               {posts.map((post, index) => (
                 <>
                   <div style={{padding : "2rem"}}>
-                    <div  key={index}>
+                    <div  key={index} className='text-start '>
                       <h3>{post.EventName}</h3>
                       <h6 style={{color : "#8F43EE"}}><span style={{fontWeight : "lighter",color : "black"}}> Company - </span>{post.CompanyName}</h6>
                       <h6><span style={{fontWeight : "lighter"}}> Requirement - </span>{post.Requirement}</h6>
+                    {expandedEvents[index] ? (
+                      <div>
+                        {/* Additional details to be displayed when expanded */}
+                        <p>Additional details here...</p>
+                      </div>
+                    ) : null}
                     </div>
+                  {expandedEvents[index] ? (
+                    <ArrowDropUpIcon onClick={() => toggleEvent(index)} className='dropIcons'/>
+                  ) : (
+                    <ArrowDropDownIcon  onClick={() => toggleEvent(index)} className='dropIcons'/>
+                  )}
                   </div>
                       <hr className="divider" />
                  </>

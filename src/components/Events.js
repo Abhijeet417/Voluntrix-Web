@@ -6,7 +6,9 @@ import BIG from './All_images/BIG.png'
 
 export const Events = () => {
   return (
-      <div class="row features-container" id='features'> 
+    <div id='features' className='features-container'>
+
+      <div class="row" > 
       <div class="col-lg-4">
         <h2 class="heading">Vision</h2>
         <img src={Community} alt="First Feature" class="bd-placeholder-img " width="180" height="105"/>
@@ -24,6 +26,7 @@ export const Events = () => {
         <img src={BIG} alt="Third Feature" class="bd-placeholder-img " width="180" height="105"/>
         <p>Be a part of something <span className="highlight">BIG</span></p>
       </div>
+     </div>
     </div>
     );
 };

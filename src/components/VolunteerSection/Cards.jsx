@@ -237,7 +237,7 @@ import React,{useState} from 'react';
 import ApplyButton from './ApplyButton';
 import { auth } from '../config';
 
-const Cards = ({event,onApply}) => {
+const Cards = ({event,onApply,onClick}) => {
 
   const userInfo = auth.currentUser;
   const uid = userInfo.uid;
@@ -324,7 +324,7 @@ const Cards = ({event,onApply}) => {
   return (
     <> 
        <div className='cards'>
-        <div className='card'  style={card}>
+        <div className='card'  style={card} onClick={onClick}>
             <img src={event.imageUrl} alt={event.name} style={card_img}></img>
             <div   style={card_info}>
             <h3   style={card_title}>{event.EventName}</h3>

@@ -43,13 +43,13 @@ export const Download = () => {
   }, [images]);
 
   return (
-   <div id="download" className="px-3 py-4 text-center" style={{ backgroundColor: "black", color: "white" }}>
-    <div className="download-content row">
-      <div className="download-left col-lg-6">
-        <img className="d-block mx-auto mb-4" src={images[currentImageIndex]} alt="" width="400" height="650" />
-        <h1 className="display-5 fw-bold" style={{textAlign :"center"}}>Download Our App</h1>
-        <p className="lead mb-4 download-paragraph">Download Our Brand New App (Voluntrix).</p>
-        <div className="d-grid gap-2 d-sm-flex justify-content-sm-center">
+   <div id="download" style={{ backgroundColor: "black", color: "white" }}>
+    <div className="download-content row justify-content-center align-items-center">
+      <div className="download-left col-lg-8 ">
+        <img src={images[currentImageIndex]} alt="" width="400" height="650" />
+        <h1 className="fw-bold">Download Our App</h1>
+        <p className="download-paragraph">Download Our Brand New App (Voluntrix).</p>
+        <div className="d-flex gap-2 justify-content-center align-items-center">
           <a
             href="https://drive.google.com/drive/folders/1cXZMyJ6yDvmBVVOVuqtmo9l15taMAiQj"
             target="_blank"
@@ -73,7 +73,7 @@ export const Download = () => {
           </button>
         </div>
       </div>
-       <div className="download-right col-lg-6">
+       <div className="download-right col-lg-4">
         <div className="qr-code-container">
           <img src={qrCodeImage} alt="QR Code" className="qr-code-image" />
           <p className="qr-code-text">Scan the QR CODE</p>

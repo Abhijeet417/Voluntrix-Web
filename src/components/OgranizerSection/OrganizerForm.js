@@ -143,7 +143,7 @@ const [user,setUser]= useState({
 
   return (
     <>
-    <div className="container  text-center" style={cardStyle}>
+    <div className="container text-center" style={cardStyle}>
       <div className="row">
         <div className="col-md-5">
           <img style={imgstyle}src={photo} class="card-img-top" alt="..."/>

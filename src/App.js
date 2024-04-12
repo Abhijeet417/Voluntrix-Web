@@ -26,22 +26,25 @@ function App() {
           <Routes>
             <Route exact path='/' Component={() => {
               return (<>
+              <div style={{ overflowX: 'hidden'}}>
+
                 <Header/>
                 <About id="about"/>
                
                 <Events id="features"/>
-                <hr class="featurette-divider" style={{margin : "0",height: "2px", borderRadius: "1px",}}></hr>
+                <hr  style={{margin : "0",height: "2px", borderRadius: "1px",}}></hr>
                 <Stories/>
-                <hr class="featurette-divider" style={{margin : "0",height: "2px", borderRadius: "1px",}}></hr>
-                <Download/>
-                <hr class="featurette-divider" style={{margin : "0",height: "2px", borderRadius: "1px",}}></hr>
-                 <Contact/>
-                 <hr class="featurette-divider" style={{margin : "0",height: "2px", borderRadius: "1px",}}></hr>
+                {/* <hr class="featurette-divider" style={{margin : "0",height: "2px", borderRadius: "1px",}}></hr>
+                <Download/> */}
+                <hr style={{margin : "0",height: "2px", borderRadius: "1px",}}></hr>
+                 <Contact id="c"/>
+                 <hr style={{margin : "0",height: "2px", borderRadius: "1px",}}></hr>
                 <Footer/>
+              </div>
               </>)
             }}></Route>
             <Route exact path='/Home' element={<Home/>}/>
-            <Route exact path='/signup' Component={SignUpPage}/>
+            {/* <Route exact path='/signup' Component={SignUpPage}/> */}
             <Route exact path='/organizerpage' element={<Organizerpage />} />
             <Route exact path='/volunteerPage' element={<VolunteerPage/>}/>
           </Routes>

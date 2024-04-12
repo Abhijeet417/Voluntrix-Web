@@ -3,31 +3,34 @@ import HomeIcon from '@mui/icons-material/Home';
 import SearchIcon from '@mui/icons-material/Search';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import LogoutIcon from '@mui/icons-material/Logout';
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 import { Link, useNavigate } from 'react-router-dom';
 import { auth } from '../config';
 import { getDatabase, ref, get } from 'firebase/database';
 import '../All_Styles/VolunteerPage.css'
+import logo from '../Logo.jpg';
 
 
-const headingStyle = {
-  fontFamily: 'Pacifico',
-  fontStyle: 'normal',
-  color: '#8f43ee',
-  marginBottom: '20px',
-};
+// const headingStyle = {
+//   fontFamily: 'Pacifico',
+//   fontStyle: 'normal',
+//   color: '#8f43ee',
+//   marginBottom: '20px',
+// };
 
-const sectionStyle = {
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  color : "white",
-};
+// const sectionStyle = {
+//   display: 'flex',
+//   flexDirection: 'column',
+//   alignItems: 'center',
+//   color : "white",
+// };
 
-const iconStyle = {
-  fontSize: '30px',
-  marginRight: '10px',
-  transition: 'transform 0.3s ease-in-out',
-};
+// const iconStyle = {
+//   fontSize: '30px',
+//   marginRight: '10px',
+//   transition: 'transform 0.3s ease-in-out',
+// };
 
 const linkStyle = {
   fontSize: '15px',
@@ -66,10 +69,20 @@ const VolunteerPage = () => {
   
   const navigate = useNavigate();
   const [userAppliedEvents, setUserAppliedEvents] = useState([]);
+   const [expandedEvents, setExpandedEvents] = useState({});
 
-  const userInfo = auth.currentUser;
-  const uid = userInfo.uid;
-  
+   
+   const userInfo = auth.currentUser;
+   const uid = userInfo.uid;
+   
+   // Function to toggle the expanded state of an event
+   const toggleEvent = (index) => {
+     setExpandedEvents((prevState) => ({
+       ...prevState,
+       [index]: !prevState[index],
+     }));
+   };
+
   useEffect(() => {
     const fetchUserAppliedEvents = async () => {
       // Fetch user-specific events from Firebase
@@ -106,15 +119,15 @@ const VolunteerPage = () => {
   return (
   <div className='container-fluid h-100'>
     <div className="row h-100">
-     <div className="col-md-3 leftSection">
-       <div >
-        <h1 style={headingStyle}>Voluntrix</h1>
-        <hr className="divider" />
-        <div style={sectionStyle}>
+     <div className="leftSection">
+       <div>
+          <img src={logo} alt="Voluntrix" className='logoImage'/>
+          <hr className="divider" />
+        <div>
         <div className='elementsdiv'>
            <Link to="/Home" style={linkStyle} onMouseEnter={handleTextHover}
             onMouseLeave={handleTextLeave}>
-            <HomeIcon style={iconStyle} onMouseEnter={handleIconHover}
+            <HomeIcon className='icons' onMouseEnter={handleIconHover}
             onMouseLeave={handleIconLeave}/>
             Home
           </Link>
@@ -122,7 +135,7 @@ const VolunteerPage = () => {
           <div className='elementsdiv'>
             <Link to="/Search" style={linkStyle}onMouseEnter={handleTextHover}
               onMouseLeave={handleTextLeave}>
-              <SearchIcon style={iconStyle} onMouseEnter={handleIconHover}
+              <SearchIcon className='icons' onMouseEnter={handleIconHover}
               onMouseLeave={handleIconLeave}/>
               Search
             </Link>
@@ -130,14 +143,14 @@ const VolunteerPage = () => {
           <div className='elementsdiv'>
             <Link to="/Profile" style={linkStyle}onMouseEnter={handleTextHover}
               onMouseLeave={handleTextLeave}>
-              <AccountCircleIcon style={iconStyle} onMouseEnter={handleIconHover}
+              <AccountCircleIcon className='icons' onMouseEnter={handleIconHover}
               onMouseLeave={handleIconLeave}/>
               Profile
             </Link>
           </div>
        
           <div>
-            <LogoutIcon style={iconStyle} />
+            <LogoutIcon className='icons' />
             <button onClick={logout} className='btn bt11'>
               Logout
             </button>
@@ -147,19 +160,31 @@ const VolunteerPage = () => {
   </div>
 
       {/* Right section */}
-        <div className="col-md-9 rightSection">
+        <div className="rightSection">
            {userAppliedEvents.length > 0 ? (
             userAppliedEvents.map((event, index) => (
-              <div style={{padding : "1rem"}} className='text-start' key={index}>
+              <div style={{padding : "1rem"}}  key={index}>
                 <div key={index}>
-          
+                    <div className='text-start'>
+
                       <h2 style={{paddingBottom : "0.5rem"}} >{event.eventName}</h2>
                       <h6  style={{paddingBottom : "0.8rem"}}><span style={{fontWeight : "400",color : "#3D30A2"}}>Role -</span> {event.Role}</h6>
                       <div className='d-flex justify-content-between '>
                         <h6><span style={{fontWeight : "400",color : "#3D30A2"}}>Start Date - </span>{event.StartDate}</h6>
                         <h6><span style={{fontWeight : "400",color : "#3D30A2"}}>End Date - </span>{event.EndDate}</h6>
                       </div>
-                
+                  {expandedEvents[index] ? (
+                    <div>
+                      {/* Additional details to be displayed when expanded */}
+                      <p>Additional details here...</p>
+                    </div>
+                  ) : null}
+                    </div>
+                  {expandedEvents[index] ? (
+                    <ArrowDropUpIcon onClick={() => toggleEvent(index)} className='dropIcons'/>
+                  ) : (
+                    <ArrowDropDownIcon  onClick={() => toggleEvent(index)} className='dropIcons'/>
+                  )}
                 </div>
                 <hr className="divider" />
               </div>

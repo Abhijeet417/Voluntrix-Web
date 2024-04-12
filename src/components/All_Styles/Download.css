@@ -1,21 +1,17 @@
-.download-content {
+/* .download-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /* padding: 5rem; */
-}
+   
+} */
 
 .download-left {
-    flex: 1;
-    text-align: left;
-    padding-left: 3rem;
 }
 
 .download-right {
-    flex: 1;
-    text-align: right;
+    
     padding-right: 0rem;
-    padding-bottom: 200px;
+    /* padding-bottom: 200px; */
     /* margin-bottom: 10rem; */
     
 }
@@ -57,7 +53,7 @@
     animation: fadeInOut 2s ease infinite;
     filter: brightness(1.2);
     color: #8F43EE;
-    padding-left: 6rem;
+
 }
 img{
  

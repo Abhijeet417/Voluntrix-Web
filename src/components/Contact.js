@@ -4,11 +4,9 @@ import './All_Styles/Contact.css'
 export const Contact = () => {
   return (
 
-    <div className="contact-us-footer" style={{backgroundColor : "#7C96AB"}}>
-      <div className="container">
+    <div className="contact-us-footer" id='contact'>
         <div className="row">
-          <h2 className='ContactHeading'>Connect With Team</h2>
-          <div className="col-md-6 ">
+          <div className="col-lg-8 col-md-6">
             <form className='contact-form'>
               <div className="mb-3">
                 <input type="text" placeholder='Name' className="form-control form-details" />
@@ -20,15 +18,13 @@ export const Contact = () => {
               <div className="mb-3">
                   <input type="text" placeholder='Message' className="form-control form-details message" />
               </div>
-              <button type="submit" className="btn form-details" style={{borderColor : "transparent",backgroundColor:"Black",color:"#f4efef",fontWeight :"bold"}}>Submit Your Response</button>
+              <button type="submit" className="btn form-details contact-button" style={{borderColor : "transparent",backgroundColor:"Black",color:"#8F43EE",fontWeight :"bold"}}>Submit Your Response</button>
             </form>
           </div>
-          <div className="col-md-6">
-            <h2>Contact Details</h2>
-            {/* Add your contact details here */}
+          <div className="col-lg-4 col-md-6">
+                <h2 class="ContactHeading">Connect<br/>with<br/>Team</h2>
           </div>
         </div>
-      </div>
     </div>
   )
 }

@@ -25,10 +25,10 @@ export const Navbar1 = () => {
             <Link class="navbar-brand">
             <img src={logo} alt="Voluntrix" width="70" height="70" class="navbar-brand" to="/" style={{marginRight: "0"}}/>
             </Link>
-            <form class="d-flex"  style={{width :  "40%" }} role="search">
-      <input class="serarchBar me-3"  type="search" placeholder="Search Your Event" aria-label="Search"/>
-      <button class="btn " style={{color : "grey"}} type="submit">Search</button>
-    </form>
+            {/* <form class="d-flex"  style={{width :  "40%" }} role="search">
+                  <input class="serarchBar me-3"  type="search" placeholder="Search Your Event" aria-label="Search"/>
+                  <button class="btn " style={{color : "grey"}} type="submit">Search</button>
+                </form> */}
     <div className='d-flex'>
         {/* <img src={user.photoURL} className='userProileImage'/>
         <button className="btn btn-outline-primary" style={buttonStyle} onClick={() => setIsProfileDrawerOpen(!isProfileDrawerOpen)}>Profile</button>

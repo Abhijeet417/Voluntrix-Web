@@ -35,8 +35,8 @@ export const Header = () => {
         backgroundColor : "#8F43EE",borderColor :"black",color : "black",margin: "0 10px"
     }
   return (
-    <div>
-       <nav className="navbar navbar-expand-lg" style={HeaderStyle}>
+    <div style={HeaderStyle}>
+       <nav className="navbar navbar-expand-lg" >
          <div className="container-fluid">
             <Link class="navbar-brand" to="/">
             <img src={logo} alt="Voluntrix" width="70" height="70" class="navbar-brand" to="/" style={{marginRight: "0"}}/>
@@ -53,17 +53,17 @@ export const Header = () => {
             <a className="nav-link active" style={{color : "#7C96AB"}} aria-current="page" href="#features">Features</a>
             </li>
             <li className="nav-item">
-            <a className="nav-link active" style={{color : "#7C96AB"}} aria-current="page" href="#download">Download</a>
+            <a className="nav-link active" style={{color : "#7C96AB"}} aria-current="page" href="#contact">Contact</a>
             </li>
          </ul>
         
-        <Link to="/signup" // Use the correct path to your sign-up page
+        {/* <Link to="/signup" // Use the correct path to your sign-up page
               className="btn btn-outline-primary"
               style={button1Style}
               type="submit"
             >
               Sign Up
-            </Link>
+            </Link> */}
          {user?<Home/> : 
            <Link className="btn btn-outline-primary" style={buttonStyle} onClick={handleClick} type="submit">Login</Link>
          }

@@ -1,46 +1,19 @@
 .event-carousel {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    overflow: hidden;
-    background-color: #040D12;
-    padding: 4.5rem;
-}
-
-.event-container {
-    flex: 0 0 calc(33.333% - 20px);
     background-color: black;
-    /* default background color to black */
-    color: white;
-    /*  default text color to white */
-    
     padding: 2.5rem;
-    text-align: center;
-    transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s, color 0.3s;
-   
 }
 
-
-.event-container:hover {
-    background-color: #8F43EE;
-    /* Change background color on hover */
-    color: white;
-    /* Change text color on hover */
-    transform: translateY(-10px);
-    /* Adjust the value as needed */
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-}
-.middle-event {
- 
-    z-index: 1;
-}
+/* .event-carousel:hover {
+    background-color: #36165d;
+    transform: translateY(-5px);
+} */
 
 .event-image {
     width: 100%;
     height: 200px;
     object-fit: cover;
+    filter: brightness(0.6);
 }
-
 
 .event-title {
     font-weight: 300;
@@ -54,7 +27,11 @@
     color: white;
 }
 
-@media only screen and (max-width: 768px){
+.carousel-indicators .active{
+    background-color: #8F43EE;
+}
+
+/* @media only screen and (max-width: 768px){
     .event-carousel {
         display: flex;
         flex-direction: column;
@@ -74,4 +51,4 @@
         height: 150px;
         object-fit: cover;
     }
-}
+} */
