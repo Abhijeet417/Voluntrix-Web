@@ -32,13 +32,13 @@ function App() {
                 <About id="about"/>
                
                 <Events id="features"/>
-                <hr  style={{margin : "0",height: "2px", borderRadius: "1px",}}></hr>
+                <hr className='divider' />
                 <Stories/>
                 {/* <hr class="featurette-divider" style={{margin : "0",height: "2px", borderRadius: "1px",}}></hr>
                 <Download/> */}
-                <hr style={{margin : "0",height: "2px", borderRadius: "1px",}}></hr>
+                <hr className='divider' />
                  <Contact id="c"/>
-                 <hr style={{margin : "0",height: "2px", borderRadius: "1px",}}></hr>
+                 <hr className='divider' />
                 <Footer/>
               </div>
               </>)

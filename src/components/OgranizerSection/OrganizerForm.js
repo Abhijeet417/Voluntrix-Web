@@ -153,11 +153,10 @@ const [user,setUser]= useState({
           </div>
         </div>
         <div className="col-md-7">
-          <form className='row' style={formStyling}>
+          <form style={formStyling}>
             
-              <div className="col-md-6">
-                
-                  <input style={inputBackground}
+              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                    <input style={inputBackground}
                       type="text"
                       name="name"
                       id=""
@@ -167,82 +166,85 @@ const [user,setUser]= useState({
                       onChange={getUserData}
                   //   required
                   />
-                      <input style={inputBackground}
-                      type="text"
-                      name="EventName"
-                      id=""
-                      className="form-control"
-                      placeholder="Event Name"
-                      value={user.EventName}
-                      onChange={getUserData}
-                  //   required
-                  />
+                  <input style={inputBackground}
+                    type="text"
+                    name="CompanyName"
+                    id=""
+                    className="form-control"
+                    placeholder="Company Name"
+                    value={user.CompanyName}
+                    onChange={getUserData}
+                    //required
+                />
+              </div>
+              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+
                   <input style={inputBackground}
                       type="Date"
                       name="StartDate"
                       id=""
-                      className="form-control"
+                      className="form-control "
                       placeholder="Start Date"
                       value={user.StartDate}
                       onChange={getUserData}
                       required
                   />
                       <input style={inputBackground}
-                      type="Number"
-                      name="Amount"
+                      type="Date"
+                      name="EndDate"
                       id=""
-                      className="form-control"
-                      placeholder="Amount"
-                      value={user.Amount}
+                      className="form-control "
+                      placeholder="End Date"
+                      value={user.EndDate}
                       onChange={getUserData}
                   //   required
-                  />
+                  />     
               </div>
-              <div className="col-md-6">
+              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                  <input style={inputBackground}
-        type="text"
-        name="CompanyName"
-        id=""
-        className="form-control"
-        placeholder="Company Name"
-        value={user.CompanyName}
-        onChange={getUserData}
-        //required
-    />
-        <input style={inputBackground}
-        type="text"
-        name="Requirement"
-        id=""
-        className="form-control"
-        placeholder="Requirement"
-        value={user.Requirement}
-        onChange={getUserData}
-    //   required
-    />
-        <input style={inputBackground}
-        type="Date"
-        name="EndDate"
-        id=""
-        className="form-control"
-        placeholder="End Date"
-        value={user.EndDate}
-        onChange={getUserData}
-    //   required
-    />     
-        <input style={inputBackground}
-        type="file"
-        name="Image"
-        id=""
-        className="form-control"
-        placeholder="Upload image"
-        onChange={(e)=>setImg(e.target.files[0])}
-    //  required
-    />
-              </div>
-              
-              
-            
-            <button style={btStyle} type="submit" class="btn btn-outline-success" onClick={postData}>Submit</button> 
+                  type="text"
+                  name="EventName"
+                  id=""
+                  className="form-control"
+                  placeholder="Event Name"
+                  value={user.EventName}
+                  onChange={getUserData}
+              //   required
+                />
+                <input style={inputBackground}
+                type="text"
+                name="Requirement"
+                id=""
+                className="form-control"
+                placeholder="Requirement"
+                value={user.Requirement}
+                onChange={getUserData}
+            //   required
+                />
+          </div>
+          <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+
+              <input style={inputBackground}
+              type="Number"
+              name="Amount"
+              id=""
+              className="form-control"
+              placeholder="Amount"
+              value={user.Amount}
+              onChange={getUserData}
+          //   required
+              />
+            <input style={inputBackground}
+            type="file"
+            name="Image"
+            id=""
+            className="form-control"
+            placeholder="Upload image"
+            onChange={(e)=>setImg(e.target.files[0])}
+        //  required
+            />
+          </div>          
+ <button style={btStyle} type="submit" class="btn btn-outline-success" onClick={postData}>Submit</button> 
           </form>
         </div>
       </div>

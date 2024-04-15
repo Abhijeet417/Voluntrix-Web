@@ -6,15 +6,16 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import LogoutIcon from '@mui/icons-material/Logout';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
-import logo from '../Logo.jpg'; 
-import MultipleSelect from './Multipleselect';
-import OrganizerForm from './OrganizerForm';
-import { Link, useNavigate } from 'react-router-dom';
-import { getDatabase, ref, get, push } from 'firebase/database';
-import {auth} from '../config';
-import '../All_Styles/OrganizerPage.css';
+import DeleteIcon from '@mui/icons-material/Delete';
 import Dialog from '@mui/material/Dialog';
 import Slide from '@mui/material/Slide';
+import { Button, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@mui/material';
+import logo from '../Logo.jpg'; 
+import OrganizerForm from './OrganizerForm';
+import { Link, useNavigate } from 'react-router-dom';
+import { getDatabase, ref, get, push ,remove} from 'firebase/database';
+import {auth} from '../config';
+import '../All_Styles/OrganizerPage.css';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -96,6 +97,8 @@ const Organizerpage = () => {
   const [posts, setPosts] = useState([]);
   const [open, setOpen] = useState(false);
   const [expandedEvents, setExpandedEvents] = useState({});
+  const [deleteConfirmationOpen, setDeleteConfirmationOpen] = useState(false);
+  const [postIdToDelete, setPostIdToDelete] = useState(null);
   const navigate = useNavigate();
 
 
@@ -158,6 +161,26 @@ const Organizerpage = () => {
   };
    
   // console.log("posts : ",posts);
+  const deletePost = (postId) => {
+    const db = getDatabase();
+    const organizerDataRef = ref(db, `OrganizerData/${postId}`);
+    remove(organizerDataRef);
+    setPosts(posts.filter(post => post.id !== postId));
+  };
+
+  const openDeleteConfirmation = (postId) => {
+    setPostIdToDelete(postId);
+    setDeleteConfirmationOpen(true);
+  };
+
+  const closeDeleteConfirmation = () => {
+    setDeleteConfirmationOpen(false);
+  };
+
+  const handleDeleteConfirmation = () => {
+    deletePost(postIdToDelete);
+    closeDeleteConfirmation();
+  };
 
   const toggleForm = () => {
     setIsFormOpen(!isFormOpen);
@@ -249,6 +272,7 @@ const Organizerpage = () => {
                     {expandedEvents[index] ? (
                       <div>
                         {/* Additional details to be displayed when expanded */}
+                        <DeleteIcon onClick={() => openDeleteConfirmation(post.id)} style={{cursor: 'pointer',fontSize: '1.3rem'  }} /> {/* Delete button */}
                         <p>Additional details here...</p>
                       </div>
                     ) : null}
@@ -265,6 +289,29 @@ const Organizerpage = () => {
           </div>
         </div>
       </div>
+      </div>
+      {/* Confirmation Dialog */}
+      <div className={`delete-confirmation-container ${deleteConfirmationOpen ? 'active' : ''}`}>
+        <Dialog
+          open={deleteConfirmationOpen}
+          onClose={closeDeleteConfirmation}            
+          PaperProps={{ style: { backgroundColor: 'black' } }} // Set background color to black
+        >
+          <DialogTitle style={{ color: 'white' }}>Are you sure you want to delete this event?</DialogTitle>
+          <DialogContent>
+            <DialogContentText style={{ color: '#7C96AB' }}>
+              This action cannot be undone.
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={closeDeleteConfirmation} style={{color : '#8F43EE'}}>
+              No
+            </Button>
+            <Button onClick={handleDeleteConfirmation} style={{color : '#8F43EE'}}>
+              Yes
+            </Button>
+          </DialogActions>
+        </Dialog>
       </div>
    </div>
   );

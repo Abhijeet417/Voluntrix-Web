@@ -25,8 +25,8 @@ const UserContext = createContext();
 //changes made 
 const LoadingComponent = () => {
   return (
-    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
-      <div class="spinner-border" role="status">
+    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh',backgroundColor: 'black'}}>
+      <div class="spinner-border" style={{color:"#8F43EE"}} role="status">
         <span class="visually-hidden">Loading...</span>
       </div>
       {/* <h2>Loading...</h2> */}
