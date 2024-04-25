@@ -9,10 +9,10 @@ import { useUser } from '../UserContext';
 const OrganizerForm = ({addPost,handleButtonClick}) => {
    
   //this is the peice of code thourgh which I'm getting all the information regarding the 
-  //user logged in
-   const userInfo = auth.currentUser;
-   const uid = userInfo.uid;
-   console.log("user in ograginzerFrom" , userInfo);
+  //Event logged in
+   const EventInfo = auth.currentUser;
+   const uid = EventInfo.uid;
+   console.log("Event in ograginzerFrom" , EventInfo);
 
 
     const cardStyle={
@@ -55,7 +55,7 @@ const formStyling={
 
 const [img,setImg]= useState('');
 
-const [user,setUser]= useState({
+const [Event,setUser]= useState({
   name:"",
   EventName:"",
   Amount:"",
@@ -68,7 +68,7 @@ const [user,setUser]= useState({
  const getUserData =(event)=>{
    name=event.target.name;
    value=event.target.value;
-   setUser({...user, [name]:value })
+   setUser({...Event, [name]:value })
  };
 
  const postData = async (e)=>{
@@ -86,9 +86,9 @@ const [user,setUser]= useState({
   const snapshot = await uploadBytesResumable(imgRef, img, metadata);
   const downloadURL = await getDownloadURL(snapshot.ref);
   
-   const {name, EventName, Amount, StartDate, CompanyName, Requirement, EndDate}=user; 
+   const {name, EventName, Amount, StartDate, CompanyName, Requirement, EndDate , numberOfPeople , Location}=Event; 
 
-   if(name && EventName && Amount && StartDate && CompanyName && Requirement && EndDate){
+   if(name && EventName && Amount && StartDate && CompanyName && Requirement && EndDate && numberOfPeople && Location){
     const res =await fetch(
       "https://voluntrix-app-default-rtdb.firebaseio.com//OrganizerData.json",
       {
@@ -105,6 +105,7 @@ const [user,setUser]= useState({
           CompanyName,
           Requirement,
           EndDate,
+          numberOfPeople,
           imageUrl : downloadURL,
          }),
      }
@@ -119,6 +120,8 @@ const [user,setUser]= useState({
           CompanyName,
           Requirement,
           EndDate,
+          numberOfPeople,
+          Location,
           imageUrl : downloadURL,
         };
 
@@ -131,6 +134,8 @@ const [user,setUser]= useState({
             CompanyName:"",
             Requirement:"",
             EndDate:"",
+            numberOfPeople :"",
+            Location :"",
            });
           alert('Data Stored Successfully');
          }
@@ -162,7 +167,7 @@ const [user,setUser]= useState({
                       id=""
                       className="form-control"
                       placeholder="Your Name"
-                      value={user.name}
+                      value={Event.name}
                       onChange={getUserData}
                   //   required
                   />
@@ -172,7 +177,7 @@ const [user,setUser]= useState({
                     id=""
                     className="form-control"
                     placeholder="Company Name"
-                    value={user.CompanyName}
+                    value={Event.CompanyName}
                     onChange={getUserData}
                     //required
                 />
@@ -185,7 +190,7 @@ const [user,setUser]= useState({
                       id=""
                       className="form-control "
                       placeholder="Start Date"
-                      value={user.StartDate}
+                      value={Event.StartDate}
                       onChange={getUserData}
                       required
                   />
@@ -195,7 +200,7 @@ const [user,setUser]= useState({
                       id=""
                       className="form-control "
                       placeholder="End Date"
-                      value={user.EndDate}
+                      value={Event.EndDate}
                       onChange={getUserData}
                   //   required
                   />     
@@ -207,7 +212,7 @@ const [user,setUser]= useState({
                   id=""
                   className="form-control"
                   placeholder="Event Name"
-                  value={user.EventName}
+                  value={Event.EventName}
                   onChange={getUserData}
               //   required
                 />
@@ -217,7 +222,29 @@ const [user,setUser]= useState({
                 id=""
                 className="form-control"
                 placeholder="Requirement"
-                value={user.Requirement}
+                value={Event.Requirement}
+                onChange={getUserData}
+            //   required
+                />
+          </div>
+           <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                 <input style={inputBackground}
+                  type="text"
+                  name="numberOfPeople"
+                  id=""
+                  className="form-control"
+                  placeholder="Number Of People"
+                  value={Event.numberOfPeople}
+                  onChange={getUserData}
+              //   required
+                />
+                <input style={inputBackground}
+                type="text"
+                name="Location"
+                id=""
+                className="form-control"
+                placeholder="Location"
+                value={Event.Location}
                 onChange={getUserData}
             //   required
                 />
@@ -230,7 +257,7 @@ const [user,setUser]= useState({
               id=""
               className="form-control"
               placeholder="Amount"
-              value={user.Amount}
+              value={Event.Amount}
               onChange={getUserData}
           //   required
               />

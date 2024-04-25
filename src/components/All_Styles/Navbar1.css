@@ -4,15 +4,20 @@
      z-index: 999;
 }
 
-.serarchBar{
-    
-     width: 100%;
+.searchBar {
+     width: calc(100% - 50px);
+     /* Adjust the width to leave space for the search button */
      padding: 5px;
      background-color: #191825;
      border-radius: 5px;
-     /* border-style: solid; */
-     border-color: #8F43EE;
+     border: 1px solid #8F43EE;
+     /* Add border style */
+     color: white;
+     /* Add text color */
+     outline: none;
+     /* Remove outline when focused */
 }
+
 
 .userProileImage{
      width: 40px;

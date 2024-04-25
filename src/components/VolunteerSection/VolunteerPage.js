@@ -11,27 +11,6 @@ import { getDatabase, ref, get } from 'firebase/database';
 import '../All_Styles/VolunteerPage.css'
 import logo from '../Logo.jpg';
 
-
-// const headingStyle = {
-//   fontFamily: 'Pacifico',
-//   fontStyle: 'normal',
-//   color: '#8f43ee',
-//   marginBottom: '20px',
-// };
-
-// const sectionStyle = {
-//   display: 'flex',
-//   flexDirection: 'column',
-//   alignItems: 'center',
-//   color : "white",
-// };
-
-// const iconStyle = {
-//   fontSize: '30px',
-//   marginRight: '10px',
-//   transition: 'transform 0.3s ease-in-out',
-// };
-
 const linkStyle = {
   fontSize: '15px',
   textDecoration: 'none',
@@ -176,6 +155,7 @@ const VolunteerPage = () => {
                   {expandedEvents[index] ? (
                     <div>
                       {/* Additional details to be displayed when expanded */}
+                      <p>Location : {event.Location}</p>
                       <p>Additional details here...</p>
                     </div>
                   ) : null}

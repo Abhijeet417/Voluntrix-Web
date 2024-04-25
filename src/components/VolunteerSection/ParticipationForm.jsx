@@ -40,6 +40,7 @@ const ParticipationForm = ({func,onApply,event}) => {
       StartDate : event.StartDate,
       EndDate : event.EndDate,
       Role: event.Requirement,
+      Location : event.Location,
     };
     
     const formData = new FormData(form.current);

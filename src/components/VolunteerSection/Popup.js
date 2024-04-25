@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Popup = ({ event, onClose }) => {
-  const { name, EventName, Amount, StartDate, CompanyName, Requirement, EndDate, imageUrl } = event;
+  const { name, EventName, Amount, StartDate, CompanyName, Requirement, EndDate, imageUrl,numberOfPeople,Location } = event;
   const currentDate = new Date();
   const startDate = new Date(StartDate);
   const endDate = new Date(EndDate);
@@ -82,12 +82,16 @@ const Popup = ({ event, onClose }) => {
         <a className="close-btn" style={closeBtnStyle} onClick={onClose}>×</a>
         {imageUrl && <img src={imageUrl} alt={EventName} style={{ width: '100%', marginBottom: '20px'}} />}
         <h2>{EventName}</h2>
-        <p><strong>Organizer:</strong> {name}</p>
+        <div className='text-start '>
+         <p><strong>Organizer:</strong> {name}</p>
         <p><strong>Company:</strong> {CompanyName}</p>
+        <p><strong>Location:</strong> {Location}</p>
         <p><strong>Amount:</strong> {Amount}</p>
         <p><strong>Start Date:</strong> {StartDate}</p>
         <p><strong>End Date:</strong> {EndDate}</p>
         <p><strong>Requirement:</strong> {Requirement}</p>
+        </div>
+        <strong>Status</strong>
         <div style={progressBarStyle}>
           <div style={progressIndicatorStyle}></div>
         </div>
