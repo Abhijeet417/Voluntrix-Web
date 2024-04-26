@@ -119,14 +119,14 @@ const VolunteerPage = () => {
               Search
             </Link>
           </div>
-          <div className='elementsdiv'>
+          {/* <div className='elementsdiv'>
             <Link to="/Profile" style={linkStyle}onMouseEnter={handleTextHover}
               onMouseLeave={handleTextLeave}>
               <AccountCircleIcon className='icons' onMouseEnter={handleIconHover}
               onMouseLeave={handleIconLeave}/>
               Profile
             </Link>
-          </div>
+          </div> */}
        
           <div>
             <LogoutIcon className='icons' />
@@ -156,6 +156,7 @@ const VolunteerPage = () => {
                     <div>
                       {/* Additional details to be displayed when expanded */}
                       <p>Location : {event.Location}</p>
+                      <p>{event.EventId}</p>
                       <p>Additional details here...</p>
                     </div>
                   ) : null}

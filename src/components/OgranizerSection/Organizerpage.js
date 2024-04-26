@@ -13,7 +13,7 @@ import { Button, DialogActions, DialogContent, DialogContentText, DialogTitle } 
 import logo from '../Logo.jpg'; 
 import OrganizerForm from './OrganizerForm';
 import { Link, useNavigate } from 'react-router-dom';
-import { getDatabase, ref, get, push ,remove} from 'firebase/database';
+import { getDatabase, ref, get, push ,remove, query, equalTo } from 'firebase/database';
 import {auth} from '../config';
 import '../All_Styles/OrganizerPage.css';
 
@@ -28,19 +28,6 @@ const headingStyle = {
   color: '#8f43ee',
   marginBottom: '20px',
 };
-
-// const sectionStyle = {
-//   display: 'flex',
-//   flexDirection: 'column',
-//   alignItems: 'center',
-//   color : "white",
-// };
-
-// const iconStyle = {
-//   fontSize: '30px',
-//   marginRight: '10px',
-//   transition: 'transform 0.3s ease-in-out',
-// };
 
 const AddOuter = {
     height : '50px',
@@ -99,16 +86,50 @@ const Organizerpage = () => {
   const [expandedEvents, setExpandedEvents] = useState({});
   const [deleteConfirmationOpen, setDeleteConfirmationOpen] = useState(false);
   const [postIdToDelete, setPostIdToDelete] = useState(null);
+  const [volunteers, setVolunteers] = useState({}); // State to hold volunteers
   const navigate = useNavigate();
 
+  const fetchVolunteers = async (postId) => {
+    const db = getDatabase();
+    const volunteerDataRef = ref(db, 'VolunteerData');
 
-    // Function to toggle the expanded state of an event
-   const toggleEvent = (index) => {
-     setExpandedEvents((prevState) => ({
-       ...prevState,
-       [index]: !prevState[index],
-     }));
-   };
+    try {
+      const snapshot = await get(volunteerDataRef);
+      if (snapshot.exists()) {
+        const volunteerData = snapshot.val();
+        const volunteersArray = Object.values(volunteerData).filter(volunteer => volunteer.EventId === postId);
+        console.log('Volunteers:', volunteersArray);
+        setVolunteers({ ...volunteers, [postId]: volunteersArray });
+      } else {
+        console.log('No data found in VolunteerData');
+        setVolunteers({ ...volunteers, [postId]: [] });
+      }
+    } catch (error) {
+      console.error('Error fetching volunteers:', error);
+    }
+  };
+
+  // Function to toggle the expanded state of an event
+  const toggleEvent = (index) => {
+    setExpandedEvents((prevState) => ({
+      ...prevState,
+      [index]: !prevState[index],
+    }));
+
+    // Fetch volunteers when expanding event
+    if (!expandedEvents[index]) {
+      const postId = posts[index].id;
+      console.log("postId", postId);
+      fetchVolunteers(postId);
+    }
+  };
+  //   // Function to toggle the expanded state of an event
+  // const toggleEvent = (index) => {
+  //    setExpandedEvents((prevState) => ({
+  //      ...prevState,
+  //      [index]: !prevState[index],
+  //    }));
+  //  };
   const handleButtonClick = () => {
       setOpen(false);
     };
@@ -120,8 +141,6 @@ const Organizerpage = () => {
   const handleClose = () => {
     setOpen(false);
   };
-
-  // const navigate = useNavigate();
 
   useEffect(() => {
 
@@ -169,6 +188,7 @@ const Organizerpage = () => {
   };
 
   const openDeleteConfirmation = (postId) => {
+    // console.log("postId : ",postId);
     setPostIdToDelete(postId);
     setDeleteConfirmationOpen(true);
   };
@@ -216,14 +236,14 @@ const Organizerpage = () => {
             <span>Search</span>
           </Link>
         </div>
-        <div className='elementsDiv'>
+        {/* <div className='elementsDiv'>
           <Link to="/Profile" style={linkStyle}onMouseEnter={handleTextHover}
             onMouseLeave={handleTextLeave}>
             <AccountCircleIcon className='icons' onMouseEnter={handleIconHover}
             onMouseLeave={handleIconLeave}/>
             <span>Profile</span>
           </Link>
-        </div>
+        </div> */}
         <div className='elementsDiv'>
           <div style={AddOuter}onMouseEnter={handleIconHover}onMouseLeave={handleIconLeave} >
             {/* <AddIcon onClick={toggleForm} style={AddStyle} onMouseEnter={handleIconHover}onMouseLeave={handleIconLeave}/> */}
@@ -269,13 +289,19 @@ const Organizerpage = () => {
                       <h3>{post.EventName}</h3>
                       <h6 style={{color : "#8F43EE"}}><span style={{fontWeight : "lighter",color : "black"}}> Company - </span>{post.CompanyName}</h6>
                       <h6><span style={{fontWeight : "lighter"}}> Requirement - </span>{post.Requirement}</h6>
-                    {expandedEvents[index] ? (
-                      <div>
-                        {/* Additional details to be displayed when expanded */}
-                        <DeleteIcon onClick={() => openDeleteConfirmation(post.id)} style={{cursor: 'pointer',fontSize: '1.3rem'  }} /> {/* Delete button */}
-                        <p>Additional details here...</p>
-                      </div>
-                    ) : null}
+                   {expandedEvents[index] ? (
+                        <div>
+                          {/* Additional details to be displayed when expanded */}
+                          <DeleteIcon onClick={() => openDeleteConfirmation(post.id)} style={{ cursor: 'pointer', fontSize: '1.3rem' }} /> {/* Delete button */}
+                          <p>Additional details here...</p>
+                          {/* List of volunteers */}
+                          <ul>
+                            {volunteers[post.id] && volunteers[post.id].map((volunteer, idx) => (
+                              <li key={idx}>{volunteer.Volunteer_name}</li>
+                            ))}
+                          </ul>
+                        </div>
+                      ) : null}
                     </div>
                   {expandedEvents[index] ? (
                     <ArrowDropUpIcon onClick={() => toggleEvent(index)} className='dropIcons'/>
@@ -290,7 +316,7 @@ const Organizerpage = () => {
         </div>
       </div>
       </div>
-      {/* Confirmation Dialog */}
+      {/*Delete Confirmation Dialog */}
       <div className={`delete-confirmation-container ${deleteConfirmationOpen ? 'active' : ''}`}>
         <Dialog
           open={deleteConfirmationOpen}

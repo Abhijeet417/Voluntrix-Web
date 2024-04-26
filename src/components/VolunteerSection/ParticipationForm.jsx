@@ -11,24 +11,13 @@ const ParticipationForm = ({func,onApply,event}) => {
    const uid = userInfo.uid;
   // console.log("events in ParticipationForm : " , event);
   const form = useRef();
+  console.log(event.id);
 
   const db = getDatabase();
   const volunteerDataRef = ref(db, 'VolunteerData');
 
   const sendEmail = (e) => {
-    e.preventDefault();
-
-    // emailjs.sendForm('service_xqrvebm', 'template_xllr5lf', form.current, '-Pg-USbZPOi2mArd6')
-    //   .then((result) => {
-    //        alert('Message Sent Successfully');
-          
-    //        e.target.reset();
-    //        onApply();
-    //   }, (error) => {
-    //    //   console.log(error.text);
-    //    alert('Error in sending');
-    //   });
-    
+    e.preventDefault();   
     
     // Event-specific data from the event prop
     const eventSpecificData = {
@@ -40,7 +29,7 @@ const ParticipationForm = ({func,onApply,event}) => {
       StartDate : event.StartDate,
       EndDate : event.EndDate,
       Role: event.Requirement,
-      Location : event.Location,
+      EventId : event.id,
     };
     
     const formData = new FormData(form.current);
@@ -55,27 +44,6 @@ const ParticipationForm = ({func,onApply,event}) => {
     };
 
 
-    // emailjs.sendForm('service_xqrvebm', 'template_xllr5lf', form.current, '-Pg-USbZPOi2mArd6')
-    // .then((result) => {
-        
-
-    //     // Push the data to the VolunteerData node in Firebase
-    //     push(volunteerDataRef, volunteerEventData)
-    //       .then(() => {
-    //         alert('Message Sent Successfully and Data Stored!');
-    //         e.target.reset();
-    //         onApply();
-    //         func(); // Call the func to update the button text to 'Applied!'
-    //       })
-    //       .catch((error) => {
-    //         console.error('Error storing data:', error);
-    //         alert('Error in storing data');
-    //       });
-    //   })
-    //   .catch((error) => {
-    //     console.error('Error sending email:', error);
-    //     alert('Error in sending email');
-    //   });
     emailjs.send('service_xqrvebm', 'template_xllr5lf', volunteerEventData, '-Pg-USbZPOi2mArd6')
   .then((result) => {
     // Sending email succeeded
@@ -88,12 +56,12 @@ const ParticipationForm = ({func,onApply,event}) => {
         func(); // Call the func to update the button text to 'Applied!'
       })
       .catch((error) => {
-        console.error('Error storing data:', error);
+        console.log('Error storing data:', error);
         alert('Error in storing data');
       });
   })
   .catch((error) => {
-    console.error('Error sending email:', error);
+    console.log('Error sending email:', error);
     alert('Error in sending email');
   });
 

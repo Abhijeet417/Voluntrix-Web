@@ -12,7 +12,7 @@ const OrganizerForm = ({addPost,handleButtonClick}) => {
   //Event logged in
    const EventInfo = auth.currentUser;
    const uid = EventInfo.uid;
-   console.log("Event in ograginzerFrom" , EventInfo);
+  //  console.log("Event in ograginzerFrom" , EventInfo);
 
 
     const cardStyle={
