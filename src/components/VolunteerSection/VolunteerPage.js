@@ -158,8 +158,8 @@ const VolunteerPage = () => {
                     <div>
                       {/* Additional details to be displayed when expanded */}
                       <p>Location : {event.Location}</p>
-                      <p>{event.EventId}</p>
-                      <p>Additional details here...</p>
+                      {/* <p>{event.EventId}</p> */}
+                      {/* <p>Additional details here...</p> */}
                     </div>
                   ) : null}
                     </div>

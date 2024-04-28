@@ -1,6 +1,6 @@
 .leftSectionStyle {
     width: 20%;
-    color: white;
+    color: #F5EFE6;
     padding: 20px 20px 70px 20px;
     border-right: 1px solid #ccc;
     background-color: #191825;
@@ -42,7 +42,7 @@
     overflow-y: auto; 
     box-sizing: border-box;
     height: 100vh;
-    background-color: grey;
+    background-color: #F5EFE6;
     
 }
 

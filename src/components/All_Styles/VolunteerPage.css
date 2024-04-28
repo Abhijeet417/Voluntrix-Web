@@ -3,7 +3,7 @@
     width: 20%;
     color: white;
     padding: 20px 20px 70px 20px;
-    border-right: 1px solid #ccc;
+    border-right: 1px solid #F5EFE6;;
     background-color: #191825;
     height: 100vh;
 
@@ -32,7 +32,7 @@
     overflow-y: auto;
     box-sizing: border-box;
     height: 100vh;
-    background-color: grey;
+    background-color: #F5EFE6;;
 }
 
 .dropIcons{

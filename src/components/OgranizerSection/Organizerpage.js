@@ -13,21 +13,13 @@ import { Button, DialogActions, DialogContent, DialogContentText, DialogTitle } 
 import logo from '../Logo.jpg'; 
 import OrganizerForm from './OrganizerForm';
 import { Link, useNavigate } from 'react-router-dom';
-import { getDatabase, ref, get, push ,remove, query, equalTo } from 'firebase/database';
+import { getDatabase, ref, get, push ,remove, } from 'firebase/database';
 import {auth} from '../config';
 import '../All_Styles/OrganizerPage.css';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
-
-
-const headingStyle = {
-  fontFamily: 'Pacifico',
-  fontStyle: 'normal',
-  color: '#8f43ee',
-  marginBottom: '20px',
-};
 
 const AddOuter = {
     height : '50px',
@@ -43,7 +35,6 @@ const AddStyle = {
   fontWeight : '1000',
   color : '#8F43EE'
 }
-
 const linkStyle = {
   fontSize: '15px',
   textDecoration: 'none',
@@ -52,27 +43,23 @@ const linkStyle = {
   transition: 'font-weight 0.3s ease-in-out',
   marginBottom : '3px'
 };
-
-
-
 const contentStyle = {
   color : 'white',
   fontSize : '3rem',
 };
-  const handleIconHover = (event) => {
-    event.target.style.transform = 'scale(1.2)';
-  };
+const handleIconHover = (event) => {
+  event.target.style.transform = 'scale(1.2)';
+};
 
-  const handleIconLeave = (event) => {
-    event.target.style.transform = 'scale(1)';
-  };
-  const handleTextHover = (event) => {
-    event.target.style.fontWeight='bold';
-  };
-
-  const handleTextLeave = (event) => {
-    event.target.style.fontWeight='normal';
-  };
+const handleIconLeave = (event) => {
+  event.target.style.transform = 'scale(1)';
+};
+const handleTextHover = (event) => {
+  event.target.style.fontWeight='bold';
+};
+const handleTextLeave = (event) => {
+  event.target.style.fontWeight='normal';
+};
 
 
 const Organizerpage = () => {
