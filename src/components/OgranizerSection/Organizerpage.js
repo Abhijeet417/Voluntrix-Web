@@ -244,21 +244,22 @@ const Organizerpage = () => {
             <span>Profile</span>
           </Link>
         </div> */}
-        <div className='elementsDiv'>
+        <div className='elementsDiv' style={{cursor: 'pointer'}}>
           <div style={AddOuter}onMouseEnter={handleIconHover}onMouseLeave={handleIconLeave} >
             {/* <AddIcon onClick={toggleForm} style={AddStyle} onMouseEnter={handleIconHover}onMouseLeave={handleIconLeave}/> */}
             <AddIcon onClick={handleClickOpen} style={AddStyle} onMouseEnter={handleIconHover}onMouseLeave={handleIconLeave}/>
           </div>
-          <div style={{ cursor: 'pointer', ...linkStyle }} onMouseEnter={handleTextHover}
+          <div style={{...linkStyle }} onMouseEnter={handleTextHover}
             onMouseLeave={handleTextLeave}>
             <span>Post Your Event</span>
           </div>
         </div>
         <div>
-          <LogoutIcon className='icons' />
-          <button onClick={logout} className='btn bt1'>
+          <LogoutIcon className='icons'  onClick={logout} style={{color : '#8F43EE',cursor: 'pointer'}}/>
+          <span>Logout</span>
+          {/* <button onClick={logout} className='btn bt1'>
             Logout
-          </button>
+          </button> */}
       </div>
       </div>
       </div>

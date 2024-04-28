@@ -82,23 +82,26 @@ const Popup = ({ event, onClose }) => {
         <a className="close-btn" style={closeBtnStyle} onClick={onClose}>×</a>
         {imageUrl && <img src={imageUrl} alt={EventName} style={{ width: '100%', marginBottom: '20px'}} />}
         <h2>{EventName}</h2>
-        <div className='text-start '>
-         <p><strong>Organizer:</strong> {name}</p>
-        <p><strong>Company:</strong> {CompanyName}</p>
-        <p><strong>Location:</strong> {Location}</p>
-        <p><strong>Amount:</strong> {Amount}</p>
-        <p><strong>Start Date:</strong> {StartDate}</p>
-        <p><strong>End Date:</strong> {EndDate}</p>
-        <p><strong>Requirement:</strong> {Requirement}</p>
-        </div>
-        <strong>Status</strong>
-        <div style={progressBarStyle}>
-          <div style={progressIndicatorStyle}></div>
-        </div>
-        <p style={{ color: 'red', display: statusMessage === 'Expired' ? 'block' : 'none' }}>Expired</p>
-        <p style={{ color: 'green', display: statusMessage === 'Has Not Started Yet' ? 'block' : 'none' }}>Has Not Started Yet</p>
-        <p style={{ color: 'blue', display: statusMessage === 'In Progress' ? 'block' : 'none' }}>In Progress</p>
+      <div style={progressBarStyle}>
+        <div style={progressIndicatorStyle}></div>
       </div>
+      <p style={{ color: 'red', fontWeight : "bold" ,display: statusMessage === 'Expired' ? 'block' : 'none' }}> <strong style={{color:'black'}}>Status : </strong>Has been completed</p>
+      <p style={{ color: 'green', fontWeight : "bold"  , display: statusMessage === 'Has Not Started Yet' ? 'block' : 'none' }}><strong>Status : </strong>Has Not Started Yet</p>
+      <p style={{ color: 'blue', fontWeight : "bold" , display: statusMessage === 'In Progress' ? 'block' : 'none' }}><strong>Status : </strong>In Progress</p>
+     <div className='row'>
+    <div className="col-md-6 col-lg-6 col-sm-12">
+       <p><strong>Organizer:</strong> {name}</p>
+       <p><strong>Company:</strong> {CompanyName}</p>
+       <p><strong>Start Date:</strong> {StartDate}</p>
+    </div>
+    <div className="col-md-6 col-lg-6 col-sm-12">
+       <p><strong>Location:</strong> {Location}</p>
+       <p><strong>Amount:</strong> {Amount}</p>
+       <p><strong>End Date:</strong> {EndDate}</p>
+    </div>
+</div>
+
+     </div>
     </div>
   );
 }

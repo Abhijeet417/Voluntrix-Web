@@ -129,10 +129,12 @@ const VolunteerPage = () => {
           </div> */}
        
           <div>
-            <LogoutIcon className='icons' />
-            <button onClick={logout} className='btn bt11'>
+          <LogoutIcon className='icons'  onClick={logout} style={{color : '#8F43EE',cursor: 'pointer'}}/>
+          <span>Logout</span>
+            {/* <button onClick={logout} className='btn bt11'>
               Logout
-            </button>
+            </button> */}
+            
         </div>
       </div>
     </div>

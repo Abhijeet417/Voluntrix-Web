@@ -25,7 +25,7 @@ const ProfileDrawer = ({isOpen}) => {
             </div>
             <hr className="divider" />
            
-                <button className="drawer-button">Your Profile</button>
+                {/* <button className="drawer-button">Your Profile</button> */}
                 <Link to='/volunteerPage' ><button className="drawer-button">Your Participations</button></Link>
                 <button className=' logoutLink' onClick={logout}>Logout</button>
             

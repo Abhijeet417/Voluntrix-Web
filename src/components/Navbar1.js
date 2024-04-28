@@ -68,6 +68,7 @@ import { Link } from 'react-router-dom'
 import './All_Styles/Navbar1.css'
 import ProfileDrawer from './ProfileDrawer'
 import { useUser } from './UserContext'
+import SearchIcon from '@mui/icons-material/Search';
 
 
 export const Navbar1 = (props) => {
@@ -97,9 +98,10 @@ export const Navbar1 = (props) => {
                             value={props.searchQuery}
                             onChange={(e) => props.setSearchQuery(e.target.value)}
                         />
-                        <button className="btn " style={{ color: 'grey' }} type="submit">
+                        {/* <button className="btn " style={{ color: 'grey' }} type="submit">
                             Search
-                        </button>
+                        </button> */}
+                        <SearchIcon type="submit"/>
                     </form> 
                     <div className='d-flex'>
                         <img
