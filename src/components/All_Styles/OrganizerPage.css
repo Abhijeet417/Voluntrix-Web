@@ -69,7 +69,11 @@
                 font-size: small;
                 /* display: none; */
             }
-        }
+            .volunteers-list p{
+                font-size: 0.8rem;
+            }
+
+    }
 
 
 

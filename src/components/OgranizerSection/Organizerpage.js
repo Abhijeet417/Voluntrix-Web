@@ -297,16 +297,17 @@ const Organizerpage = () => {
                               <DeleteIcon onClick={() => openDeleteConfirmation(post.id)} style={{ cursor: 'pointer', fontSize: '1.5rem' }} /> {/* Delete button */}
                                <p style={{color : 'black'}}> - Delete this event</p>
                           </div>
-                          {/* <p>Additional details here...</p> */}
-                          {/* List of volunteers */}
-                          <ul>
-                            {volunteers[post.id] && volunteers[post.id].map((volunteer, idx) => (
-                              <li key={idx} className='d-flex'>
-                                <p>{volunteer.Volunteer_name}</p>
-                                <p>{volunteer.Volunteer_email}</p>
+                          <div className=' text-center'>
+                             <strong>List of volunteers </strong>
+                            <ul className="list-unstyled">
+                              {volunteers[post.id] && volunteers[post.id].map((volunteer, idx) => (
+                                <li key={idx} className='volunteers-list d-flex justify-content-center'>
+                                  <p>{volunteer.Volunteer_name}</p>
+                                  <p>{volunteer.Volunteer_email}</p>
                                 </li>
-                            ))}
-                          </ul>
+                              ))}
+                            </ul>
+                          </div>
                         </div>
                       ) : null}
                     </div>
