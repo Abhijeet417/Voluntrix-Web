@@ -293,12 +293,18 @@ const Organizerpage = () => {
                    {expandedEvents[index] ? (
                         <div>
                           {/* Additional details to be displayed when expanded */}
-                          <DeleteIcon onClick={() => openDeleteConfirmation(post.id)} style={{ cursor: 'pointer', fontSize: '1.3rem' }} /> {/* Delete button */}
-                          <p>Additional details here...</p>
+                          <div className='d-flex'>
+                              <DeleteIcon onClick={() => openDeleteConfirmation(post.id)} style={{ cursor: 'pointer', fontSize: '1.5rem' }} /> {/* Delete button */}
+                               <p style={{color : 'black'}}> - Delete this event</p>
+                          </div>
+                          {/* <p>Additional details here...</p> */}
                           {/* List of volunteers */}
                           <ul>
                             {volunteers[post.id] && volunteers[post.id].map((volunteer, idx) => (
-                              <li key={idx}>{volunteer.Volunteer_name}</li>
+                              <li key={idx} className='d-flex'>
+                                <p>{volunteer.Volunteer_name}</p>
+                                <p>{volunteer.Volunteer_email}</p>
+                                </li>
                             ))}
                           </ul>
                         </div>

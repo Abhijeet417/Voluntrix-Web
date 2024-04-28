@@ -88,8 +88,8 @@ const Popup = ({ event, onClose }) => {
       <p style={{ color: 'red', fontWeight : "bold" ,display: statusMessage === 'Expired' ? 'block' : 'none' }}> <strong style={{color:'black'}}>Status : </strong>Has been completed</p>
       <p style={{ color: 'green', fontWeight : "bold"  , display: statusMessage === 'Has Not Started Yet' ? 'block' : 'none' }}><strong>Status : </strong>Has Not Started Yet</p>
       <p style={{ color: 'blue', fontWeight : "bold" , display: statusMessage === 'In Progress' ? 'block' : 'none' }}><strong>Status : </strong>In Progress</p>
-     <div className='row'>
-    <div className="col-md-6 col-lg-6 col-sm-12">
+     <div className='row text-start'>
+    <div className="col-md-6 col-lg-6 col-sm-12 ">
        <p><strong>Organizer:</strong> {name}</p>
        <p><strong>Company:</strong> {CompanyName}</p>
        <p><strong>Start Date:</strong> {StartDate}</p>
