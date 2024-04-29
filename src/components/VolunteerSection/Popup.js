@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Popup = ({ event, onClose }) => {
-  const { name, EventName, Amount, StartDate, CompanyName, Requirement, EndDate, imageUrl,numberOfPeople,Location } = event;
+  const { name, EventName, Amount, StartDate, CompanyName, EndDate, imageUrl,description,Location } = event;
   const currentDate = new Date();
   const startDate = new Date(StartDate);
   const endDate = new Date(EndDate);
@@ -99,6 +99,7 @@ const Popup = ({ event, onClose }) => {
        <p><strong>Amount:</strong> {Amount}</p>
        <p><strong>End Date:</strong> {EndDate}</p>
     </div>
+    <p className='text-center' style={{color : "black"}}>{description}</p>
 </div>
 
      </div>
