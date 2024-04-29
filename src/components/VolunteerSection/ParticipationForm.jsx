@@ -74,7 +74,7 @@ const ParticipationForm = ({func,onApply,event}) => {
         <label>Name</label>
         <input type="text" name="Volunteer_name" required />
         <label>Email</label>
-        <input type="email" name="Volunteer_email" required/>
+        <input type="email" name="Volunteer_email" placeholder="Kindly mention the correct email id" required/>
         <label>Message</label>
         <textarea name="Volunteer_message" required/>
         <input type="submit" value="Send" onClick={func}/>

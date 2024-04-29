@@ -262,19 +262,18 @@ const Organizerpage = () => {
                         <div>
                           {/* Additional details to be displayed when expanded */}
                          <div className='d-flex justify-content-lg-between flex-column flex-lg-row'>
-                            <p>Your Post Id: <strong>{post.id}</strong></p>
-                            <p style={{color: 'black'}}>
+                            <p><strong style={{color : '#8F43EE'}}>Your Post Id:</strong> {post.id}</p>
+                            <p style={{color: 'black',fontWeight : "500"}}>
                                 <DeleteIcon onClick={() => openDeleteConfirmation(post.id)} style={{ cursor: 'pointer', fontSize: '1.3rem' }} /> {/* Delete button */}
                                 - Delete this event
                             </p>
                         </div>
                         <div className='text-center'>
-                             <strong>List of volunteers </strong>
+                             <strong style={{fontSize : "1.4rem"}}>List of volunteers </strong>
                             <ul className="list-unstyled">
                               {volunteers[post.id] && volunteers[post.id].map((volunteer, idx) => (
-                                <li key={idx} className='volunteers-list d-flex justify-content-center'>
-                                  <p>{volunteer.Volunteer_name}</p>
-                                  <p>{volunteer.Volunteer_email}</p>
+                                <li key={idx} className='volunteers-list justify-content-center'>
+                                  <p><strong style={{color : "#8F43EE"}}>{volunteer.Volunteer_name}</strong> - {volunteer.Volunteer_email}</p>
                                 </li>
                               ))}
                             </ul>
