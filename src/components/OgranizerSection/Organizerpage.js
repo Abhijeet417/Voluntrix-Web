@@ -50,17 +50,9 @@ const contentStyle = {
 const handleIconHover = (event) => {
   event.target.style.transform = 'scale(1.2)';
 };
-
 const handleIconLeave = (event) => {
   event.target.style.transform = 'scale(1)';
 };
-const handleTextHover = (event) => {
-  event.target.style.fontWeight='bold';
-};
-const handleTextLeave = (event) => {
-  event.target.style.fontWeight='normal';
-};
-
 
 const Organizerpage = () => {
   
@@ -110,13 +102,7 @@ const Organizerpage = () => {
       fetchVolunteers(postId);
     }
   };
-  //   // Function to toggle the expanded state of an event
-  // const toggleEvent = (index) => {
-  //    setExpandedEvents((prevState) => ({
-  //      ...prevState,
-  //      [index]: !prevState[index],
-  //    }));
-  //  };
+
   const handleButtonClick = () => {
       setOpen(false);
     };
@@ -130,9 +116,7 @@ const Organizerpage = () => {
   };
 
   useEffect(() => {
-
- const fetchData = async () => {
-     
+      const fetchData = async () => {
       const db = getDatabase();
       const organizerDataRef = ref(db, 'OrganizerData');
       try {
@@ -208,16 +192,14 @@ const Organizerpage = () => {
          <hr className="divider" />
       <div>
         <div className='elementsDiv'>
-           <Link to="/Home" style={linkStyle} onMouseEnter={handleTextHover}
-            onMouseLeave={handleTextLeave}>
+           <Link to="/Home" style={linkStyle} >
             <HomeIcon className='icons' onMouseEnter={handleIconHover}
             onMouseLeave={handleIconLeave}/>
             <span>Home</span>
           </Link>
         </div>
         <div className='elementsDiv'>
-          <Link to="/Search" style={linkStyle}onMouseEnter={handleTextHover}
-            onMouseLeave={handleTextLeave}>
+          <Link to="/Search" style={linkStyle}>
             <SearchIcon className='icons' onMouseEnter={handleIconHover}
             onMouseLeave={handleIconLeave}/>
             <span>Search</span>
@@ -232,12 +214,11 @@ const Organizerpage = () => {
           </Link>
         </div> */}
         <div className='elementsDiv' style={{cursor: 'pointer'}}>
-          <div style={AddOuter}onMouseEnter={handleIconHover}onMouseLeave={handleIconLeave} >
+          <div style={AddOuter}>
             {/* <AddIcon onClick={toggleForm} style={AddStyle} onMouseEnter={handleIconHover}onMouseLeave={handleIconLeave}/> */}
             <AddIcon onClick={handleClickOpen} style={AddStyle} onMouseEnter={handleIconHover}onMouseLeave={handleIconLeave}/>
           </div>
-          <div style={{...linkStyle }} onMouseEnter={handleTextHover}
-            onMouseLeave={handleTextLeave}>
+          <div style={{...linkStyle }}>
             <span>Post Your Event</span>
           </div>
         </div>
@@ -280,11 +261,14 @@ const Organizerpage = () => {
                    {expandedEvents[index] ? (
                         <div>
                           {/* Additional details to be displayed when expanded */}
-                          <div className='d-flex'>
-                              <DeleteIcon onClick={() => openDeleteConfirmation(post.id)} style={{ cursor: 'pointer', fontSize: '1.5rem' }} /> {/* Delete button */}
-                               <p style={{color : 'black'}}> - Delete this event</p>
-                          </div>
-                          <div className=' text-center'>
+                         <div className='d-flex justify-content-lg-between flex-column flex-lg-row'>
+                            <p>Your Post Id: <strong>{post.id}</strong></p>
+                            <p style={{color: 'black'}}>
+                                <DeleteIcon onClick={() => openDeleteConfirmation(post.id)} style={{ cursor: 'pointer', fontSize: '1.3rem' }} /> {/* Delete button */}
+                                - Delete this event
+                            </p>
+                        </div>
+                        <div className='text-center'>
                              <strong>List of volunteers </strong>
                             <ul className="list-unstyled">
                               {volunteers[post.id] && volunteers[post.id].map((volunteer, idx) => (

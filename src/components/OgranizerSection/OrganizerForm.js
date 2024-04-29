@@ -86,9 +86,9 @@ const [Event,setUser]= useState({
   const snapshot = await uploadBytesResumable(imgRef, img, metadata);
   const downloadURL = await getDownloadURL(snapshot.ref);
   
-   const {name, EventName, Amount, StartDate, CompanyName, Requirement, EndDate , numberOfPeople , Location}=Event; 
+   const {name, EventName, Amount, StartDate, CompanyName, Requirement, EndDate , description , Location}=Event; 
 
-   if(name && EventName && Amount && StartDate && CompanyName && Requirement && EndDate && numberOfPeople && Location){
+   if(name && EventName && Amount && StartDate && CompanyName && Requirement && EndDate && description && Location){
     const res =await fetch(
       "https://voluntrix-app-default-rtdb.firebaseio.com//OrganizerData.json",
       {
@@ -105,7 +105,7 @@ const [Event,setUser]= useState({
           CompanyName,
           Requirement,
           EndDate,
-          numberOfPeople,
+          description,
           imageUrl : downloadURL,
          }),
      }
@@ -120,7 +120,7 @@ const [Event,setUser]= useState({
           CompanyName,
           Requirement,
           EndDate,
-          numberOfPeople,
+          description,
           Location,
           imageUrl : downloadURL,
         };
@@ -134,7 +134,7 @@ const [Event,setUser]= useState({
             CompanyName:"",
             Requirement:"",
             EndDate:"",
-            numberOfPeople :"",
+            description :"",
             Location :"",
            });
           alert('Data Stored Successfully');
@@ -230,11 +230,11 @@ const [Event,setUser]= useState({
            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                  <input style={inputBackground}
                   type="text"
-                  name="numberOfPeople"
+                  name="description"
                   id=""
                   className="form-control"
-                  placeholder="Number Of People"
-                  value={Event.numberOfPeople}
+                  placeholder="Description"
+                  value={Event.description}
                   onChange={getUserData}
               //   required
                 />
